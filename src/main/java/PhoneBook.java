@@ -24,6 +24,17 @@ public class PhoneBook {
         return "";
     }
 
+    public Contact findContactObj(String number) {
+        for (Map.Entry<String, List<Contact>> entry : phoneGroup.entrySet()) {
+            for (Contact contact : entry.getValue()) {
+                if (contact.getPhoneNumber().equals(number)) {
+                    return contact;
+                }
+            }
+        }
+        return new Contact("EmptyContact", "+00000000000");
+    }
+
     public List<Contact> showAllContacts() {
         return phoneGroup.values().iterator().hasNext()
                 ? phoneGroup.values().iterator().next()
